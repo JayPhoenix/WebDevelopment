@@ -1,0 +1,63 @@
+.Ruler {
+    position: absolute;
+}
+
+.Ruler--horizontal {
+    left: 70px;
+    border-bottom: 1px solid #bbb;
+}
+
+.Ruler--vertical {
+    border-left: 1px solid #bbb;
+}
+
+.Ruler > div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.Ruler__unit {
+    position: absolute;
+    background: #bbb;
+}
+
+.Ruler--horizontal .Ruler__unit {
+    bottom: 0;
+    width: 1px;
+    height: 10px;
+}
+
+.Ruler--vertical .Ruler__unit {
+    left: 0;
+    width: 10px;
+    height: 1px;
+}
+
+.Ruler__unit > span {
+    position: relative;
+    font-size: 12px;
+    text-align: center;
+    display: block;
+}
+
+
+.Ruler--horizontal .Ruler__unit > span{
+    left: 3px;
+    bottom: -12px;
+    transform: rotate(45deg);
+    transform-origin: left top 0;
+}
+
+.Ruler--vertical .Ruler__unit > span{
+    top: -5px;
+    left: -25px;
+    text-align: right;
+}
+
+.Ruler__cm {
+    position: absolute;
+    left: -35px;
+    top: -15px;
+    font-size: 12px;
+}

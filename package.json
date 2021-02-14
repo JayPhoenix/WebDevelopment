@@ -1,0 +1,33 @@
+{
+  "name": "wallpaper-selector",
+  "homepage": "/js/aardvark/react-apps",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@sentry/browser": "^4.0.6",
+    "axios": "^0.18.0",
+    "d3": "^5.7.0",
+    "intl": "^1.2.5",
+    "lodash": "^4.17.10",
+    "mobile-detect": "^1.4.3",
+    "prop-types": "^15.6.2",
+    "raf": "^3.4.1",
+    "rc-tooltip": "^3.7.3",
+    "react": "^16.4.1",
+    "react-color": "^2.14.1",
+    "react-dom": "^16.4.1",
+    "react-easy-swipe": "0.0.17",
+    "react-image-lightbox": "^5.0.0",
+    "react-images": "^0.5.19",
+    "react-loader-spinner": "^2.1.0",
+    "react-modal-video": "^1.2.2",
+    "react-scripts": "1.1.4",
+    "slick-carousel": "^1.8.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

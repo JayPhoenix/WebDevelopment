@@ -1,0 +1,30 @@
+.PatternImage {
+    position: relative;
+}
+
+.PatternImage__img {
+    max-width: 100%;
+    border: 1px solid rgb(235, 235, 235);
+}
+
+.PatternImage__img--hidden {
+    width: 100%;
+    visibility: hidden;
+}
+
+.PatternImage__bgr {
+    display: inline-block;
+    background-repeat: repeat;
+    transition: all 500ms ease;
+}
+
+.PatternImage__foreground {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+}

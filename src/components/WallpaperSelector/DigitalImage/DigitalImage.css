@@ -1,0 +1,111 @@
+.DigitalImage {
+    position: relative;
+    min-width: 250px;
+    min-height: 250px;
+}
+
+.DigitalImage__img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.DigitalImage__img--main {
+    padding: 10px;
+    padding-bottom: 30px;
+}
+
+.DigitalImage__img--room {
+    visibility: hidden;
+    position: relative;
+    z-index: -1;
+}
+
+.DigitalImage__canvas-wrapper {
+    position: absolute;
+    top: 0;
+}
+
+.DigitalImage__canvas-wrapper canvas {
+    position: absolute;
+    top: 0;
+}
+
+.DigitalImage__img-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.DigitalImage__canvas-mask {
+    display: none;
+}
+
+.DigitalImage__color-input {
+    padding: 5px 20px;
+    z-index: 10;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 30px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 1%, rgba(0, 0, 0, 0) 2%, rgba(0, 0, 0, 0.65) 75%, rgba(0, 0, 0, 0.65) 100%);
+}
+
+
+.DigitalImage__color-input > div {
+    display: flex;
+    align-items: center;
+}
+
+.DigitalImage__color-input button {
+    background: none;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, .6);
+    background: rgba(0, 0, 0, .8);
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 11px;
+    opacity: .8;
+    padding: 3px 8px;
+}
+
+.DigitalImage__color-input button:hover {
+    opacity: 1;
+}
+
+
+.DigitalImage__note {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -50px;
+    height: 30px;
+    padding: 3px 5px;
+    text-align: center;
+    font-size: 11px;
+    color: #666;
+}
+
+
+.DigitalImage__search {
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    z-index: 4;
+}
+
+.DigitalImage__search img {
+    width: 32px;
+    height: 32px;
+}

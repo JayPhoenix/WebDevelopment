@@ -1,0 +1,42 @@
+.VerticalGallery {
+    margin-top: 10px;
+}
+
+.VerticalGallery__img {
+    display: inline-block;
+    background-size: cover;
+    margin-right: 3px;
+    cursor: pointer;
+    opacity: .6;
+}
+
+.VerticalGallery ul, .VerticalGallery li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.VerticalGallery li {
+    display: inline-block;
+    margin-bottom: 10px;
+    height: 100px;
+}
+
+.VerticalGallery__img:hover {
+    opacity: .8;
+}
+
+.VerticalGallery__img--active {
+    opacity: 1 !important;
+}
+
+.VerticalGallery__img {
+    display: block;
+    height: 100%;
+}
+
+.VerticalGallery__img img {
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px solid rgb(235, 235, 235);
+}

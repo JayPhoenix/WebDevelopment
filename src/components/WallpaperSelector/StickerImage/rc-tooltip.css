@@ -1,0 +1,12 @@
+.rc-tooltip {
+    z-index: 10;
+}
+
+.rc-tooltip-arrow {
+    border-bottom-color: black !important;
+}
+
+.rc-tooltip-inner {
+    border-color: black !important;
+    min-height: initial;
+}

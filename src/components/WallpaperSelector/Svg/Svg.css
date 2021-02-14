@@ -1,0 +1,10 @@
+.Svg {
+    display: block;
+    transition: transform 200ms ease;
+}
+
+.Svg svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,79 @@
+.WallpaperSelectorApp {
+    text-align: center;
+}
+
+.WallpaperSelectorApp__image-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.WallpaperSelectorApp__image-wrap__image {
+    position: relative;
+}
+
+.WallpaperSelectorApp__image-wrap__vertical-gallery {
+    /*width: 100px;*/
+    flex-shrink: 0;
+}
+
+.WallpaperSelectorApp__image-wrap__image__arrow img {
+    width: 100%;
+}
+
+.WallpaperSelectorApp__image-wrap__image__arrow {
+    position: absolute;
+    display: block;
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+    top: calc(50% - 31px * 2);
+    background: white;
+    border-radius: 50%;
+    z-index: 10;
+    cursor: pointer;
+    opacity: 0;
+    box-shadow: 0 5px 30px 0 #000;
+    transition: all .4s cubic-bezier(.5, 0, .2, 1);
+}
+
+.WallpaperSelectorApp__image-wrap:hover .WallpaperSelectorApp__image-wrap__image__arrow {
+    opacity: .3;
+}
+
+.WallpaperSelectorApp__image-wrap__image__arrow--left {
+    left: 10px;
+}
+
+.WallpaperSelectorApp__image-wrap__image__arrow--right {
+    right: 10px;
+}
+
+.WallpaperSelectorApp__image-wrap__image__arrow--hidden {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .WallpaperSelectorApp__image-wrap__vertical-gallery {
+        display: none;
+    }
+
+    .WallpaperSelectorApp__image-wrap__image__arrow {
+        opacity: .3;
+    }
+
+    .WallpaperSelectorApp__image-wrap__image__arrow--hidden {
+        display: block
+    }
+}
+
+@media (hover: hover) {
+    .WallpaperSelectorApp__image-wrap__image__arrow:hover {
+        opacity: 1 !important;
+    }
+}
+
+@media (hover: none) {
+    .WallpaperSelectorApp__image-wrap__image__arrow:active {
+        opacity: 1 !important;
+    }
+}

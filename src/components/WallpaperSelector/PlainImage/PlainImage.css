@@ -1,0 +1,23 @@
+.PlainImage {
+    position: relative;
+    display: inline-block;
+}
+
+.PlainImage__img {
+    max-width: 100%;
+    width: 100%;
+    border: 1px solid rgb(235, 235, 235);
+}
+
+.PlainImage__search {
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    z-index: 4;
+}
+
+.PlainImage__search img {
+    width: 32px;
+    height: 32px;
+}

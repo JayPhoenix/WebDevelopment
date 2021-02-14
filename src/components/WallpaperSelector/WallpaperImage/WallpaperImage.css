@@ -1,0 +1,99 @@
+.WallpaperImage {
+    position: relative;
+    background: white;
+    overflow: hidden;
+    display: inline-block;
+    line-height: 0;
+}
+
+.WallpaperImage__error {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: white;
+    background: rgba(0, 0, 0, .4);
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.WallpaperImage__error--vertical span {
+    transform:  translateX(-50%) translateY(-50%) rotate(90deg);
+    display: block;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    width: 300px;
+    text-align: center;
+    font-style: normal;
+}
+
+.WallpaperImage__img {
+    width: 100%;
+    z-index: 1;
+    transition: all 500ms ease;
+    border: 1px solid rgb(235, 235, 235);
+}
+
+.WallpaperImage__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(../../../img/crosshatch.png);
+    z-index: 2;
+}
+
+.WallpaperImage__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    overflow: hidden;
+}
+
+.WallpaperImage__overlay__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.WallpaperImage__overlay__content svg {
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    fill: white;
+    opacity: .8;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .4);
+    transition: all 200ms ease;
+}
+
+.WallpaperImage__overlay__content:hover svg {
+    opacity: 1;
+    transform: scale(1.1, 1.1);
+}
+
+.WallpaperImage__overlay:hover {
+    cursor: move;
+}
+
+.WallpaperImage__search {
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    z-index: 4;
+}
+
+.WallpaperImage__search img {
+    width: 32px;
+    height: 32px;
+}

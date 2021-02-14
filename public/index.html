@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+</head>
+<body>
+<noscript>
+    You need to enable JavaScript to run this app.
+</noscript>
+
+
+<div style="clear: both">
+    <div style="float: left; width: 60%">
+        <div id="wallpaper-selector"></div>
+    </div>
+    <div style="float: left; width: 40%">
+        <div>
+            <label>Width</label>
+            <input type="number" name="width" min="0" max="1000" step="1">
+            cm
+        </div>
+        <div>
+            <label>Height</label>
+            <input type="number" name="height" min="0" max="1000" step="1">
+            cm
+        </div>
+        <div>
+            <label>Sticker No</label>
+            <input type="number" name="stickers" min="0" max="1000" step="1">
+            cm
+        </div>
+        <div>
+            <label>
+                Flip
+                <input type="checkbox" name="flip">
+            </label>
+        </div>
+        <div>
+            <label>Pattern Size</label>
+            <input type="number" name="pattern_size" min="0" max="1000" step="1">
+            cm
+        </div>
+        <div>
+            <label>Filter</label>
+            <select name="filter">
+                <option value="">---</option>
+                <option value="b&w">B & W</option>
+                <option value="sepia">Sepia</option>
+            </select>
+        </div>
+        <div>
+            <label>Rotate</label>
+            <select name="rotate">
+                <option value="">---</option>
+                <option value="90">90</option>
+                <option value="180">180</option>
+                <option value="270">270</option>
+            </select>
+        </div>
+        <div>
+            <label>
+                Tiles
+                <input type="checkbox" name="tiles">
+            </label>
+        </div>
+        <div>
+            <label>
+                Cropped
+                <input type="checkbox" name="cropped">
+            </label>
+        </div>
+    </div>
+    <div>
+        <label>Color</label>
+        <select name="color">
+            <option value="#000">Black</option>
+            <option value="#ffffff">White</option>
+            <option value="#ff0000">Red</option>
+            <option value="#00ff00">Green</option>
+            <option value="#0000ff">Blue</option>
+            <option value="GMJPG">Golden Metallic</option>
+        </select>
+    </div>
+    <div>
+        <label>Type</label>
+        <select name="type">
+          <option value="">Plain</option>
+          <option value="wallpaper">Wallpaper</option>
+          <option value="pattern">Pattern</option>
+          <option value="sticker">Sticker</option>
+        </select>
+    </div>
+    <div>
+        <button id="change-image">Change Image</button>
+    </div>
+    <div id="errors" style="color: red"></div>
+</div>
+
+<hr>
+
+
+<script>
+  window.WALLPAPER_SELECTOR_IMAGES = [
+    // 'https://www.azutura.com/media/catalog/product/cache/47/image/650x/040ec09b1e35df139433887a97daa66f/W/S/WS-42159_WP-01.jpg',
+    // 'https://www.azutura.com/media/catalog/product/cache/47/image/650x/040ec09b1e35df139433887a97daa66f/W/S/WS-42159_WP-02.jpg',
+    // 'https://www.azutura.com/media/catalog/product/cache/47/image/650x/040ec09b1e35df139433887a97daa66f/W/S/WS-42159_WP-03.jpg',
+    // 'https://www.azutura.com/media/catalog/product/cache/47/image/650x/040ec09b1e35df139433887a97daa66f/W/S/WS-42159_WP-04.jpg',
+    // 'https://www.azutura.com/media/catalog/product/cache/47/image/650x/040ec09b1e35df139433887a97daa66f/W/S/WS-42159_WP.jpg',
+    // 'https://www.iconwallstickers.co.uk/media/catalog/product/cache/5/image/650x/040ec09b1e35df139433887a97daa66f/W/S/WS-15059-01.jpg',
+    // 'https://www.iconwallstickers.co.uk/media/catalog/product/cache/5/image/650x/040ec09b1e35df139433887a97daa66f/W/S/WS-15059-02.jpg',
+    // 'https://www.iconwallstickers.co.uk/media/catalog/product/cache/5/image/650x/040ec09b1e35df139433887a97daa66f/W/S/WS-15059.jpg',
+    // 'https://www.iconwallstickers.co.uk/media/catalog/product/cache/5/image/650x/040ec09b1e35df139433887a97daa66f/W/S/WS-47171_WP.jpg',
+    '/img/foreground_Fotolia_112598250_Subscription_XL_BG4.png',
+    '/img/foreground_Kids_Blue_Teddy_Toys_Wooden_Floor_Fotolia_41916291_BG.png',
+    '/img/foreground_Living_White_Lamp_Plant_Fotolia_94207317_BG1.png',
+    // '/img/room_bedroom.jpg',
+    // '/img/room_kitchen.jpg',
+    // '/img/room_living.jpg',
+  ];
+
+  // window.WALLPAPER_SELECTOR_SKU = 'WS-19039'; //Tree of life Wallsticker
+  // window.WALLPAPER_SELECTOR_SKU = 'WS-45267'; //Olympic cycling Digital
+  // window.WALLPAPER_SELECTOR_SKU = 'WS-51293'; //Olympic hockey Digital
+  window.WALLPAPER_SELECTOR_SKU = 'WS-47171'; //Pattern / Wallpaper
+  // window.WALLPAPER_SELECTOR_SKU = 'WS-41305'; //Wallpaper
+  window.WALLPAPER_SELECTOR_LOCALE = 'en_GB';
+  window.WALLPAPER_SELECTOR_CURRENCY = 'GBP';
+  window.WALLPAPER_SELECTOR_BASE_PRICE = 25;
+  window.WALLPAPER_SELECTOR_TYPE = 'wallpaper';
+  window.BASE_URL = 'https://web-dev.azutura.com/';
+
+  // testing variable
+  window.WALLPAPER_SELECTOR_VARIABLE_IMAGE_BGR = false;
+  window.WALLPAPER_SELECTOR_COLOR_PICKER = 'swatches';
+
+  document.addEventListener('DOMContentLoaded', function () {
+
+    document.getElementById('change-image').addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const detail = {
+        url: 'https://www.iconwallstickers.co.uk/media/catalog/product/cache/5/image/650x/040ec09b1e35df139433887a97daa66f/W/S/WS-42159.jpg', //This changes the Wallpaper SKU, when you press ChangeImage
+        customProductFile: '2dd2182e61a20d4eb7b453276f8bc8de.jpg',
+      };
+
+      let event = new CustomEvent('wallpaper-selector:updateMainImage', {detail: detail});
+      document.dispatchEvent(event);
+    });
+
+    document.querySelector('input[name="width"]').addEventListener('input', function (e) {
+      let event = new CustomEvent('wallpaper-selector:onWidthChanged', {detail: e.target.value});
+      document.dispatchEvent(event);
+    });
+
+    document.querySelector('input[name="height"]').addEventListener('input', function (e) {
+      let event = new CustomEvent('wallpaper-selector:onHeightChanged', {detail: e.target.value});
+      document.dispatchEvent(event);
+    });
+
+    document.querySelector('input[name="stickers"]').addEventListener('input', function (e) {
+      let event = new CustomEvent('wallpaper-selector:onStickersNumberChanged', {detail: e.target.value});
+      document.dispatchEvent(event);
+    });
+
+    document.querySelector('input[name="flip"]').addEventListener('change', function (e) {
+      let event = new CustomEvent('wallpaper-selector:onFlipChanged', {detail: e.target.checked});
+      document.dispatchEvent(event);
+    });
+
+    document.querySelector('input[name="tiles"]').addEventListener('change', function (e) {
+      let event = new CustomEvent('wallpaper-selector:onTilesChanged', {detail: e.target.checked});
+      document.dispatchEvent(event);
+    });
+
+    document.querySelector('select[name="filter"]').addEventListener('change', function (e) {
+      let event = new CustomEvent('wallpaper-selector:onFilterChanged', {detail: e.target.value});
+      document.dispatchEvent(event);
+    });
+
+    document.querySelector('select[name="rotate"]').addEventListener('change', function (e) {
+      let event = new CustomEvent('wallpaper-selector:onRotateChanged', {detail: e.target.value});
+      document.dispatchEvent(event);
+    });
+
+    document.querySelector('input[name="cropped"]').addEventListener('change', function (e) {
+      let event = new CustomEvent('wallpaper-selector:onCroppedChanged', {detail: e.target.checked});
+      document.dispatchEvent(event);
+    });
+
+    document.querySelector('select[name="type"]').addEventListener('change', function (e) {
+      let event = new CustomEvent('wallpaper-selector:onTypeChanged', {detail: e.target.value});
+      document.dispatchEvent(event);
+    });
+
+    document.querySelector('select[name="color"]').addEventListener('change', function (e) {
+      let event = new CustomEvent('wallpaper-selector:onColorChanged', {detail: e.target.value});
+      document.dispatchEvent(event);
+    });
+
+    document.querySelector('input[name="pattern_size"]').addEventListener('input', function (e) {
+      let event = new CustomEvent('wallpaper-selector:onPatternSizeChanged', {detail: e.target.value});
+      document.dispatchEvent(event);
+    });
+
+    document.addEventListener('wallpaper-selector:onValidate', function (e) {
+      document.getElementById('errors').innerText = e.detail.join(', ');
+    });
+
+  });
+</script>
+
+</body>
+</html>
